@@ -1,0 +1,47 @@
+<div class="chat">
+  <h1>WS Chat</h1>
+  <div class="chatbox">
+    <div class="messages_list">
+      @for (message of messages(); track message.id) {
+        <div
+          class="chatbox__messages"
+          [ngClass]="{
+          my: message.author === userLogin
+        }">
+          <div class="user-message">
+            <div class="message-box">
+              <p class="name">
+                {{ message.author }}
+              </p>
+              <p class="message">
+                {{ message.text }}
+              </p>
+            </div>
+          </div>
+        </div>
+      } @empty {
+        <h2>There are no messages yet</h2>
+      }
+    </div>
+    <div class="chatbox__user-list">
+      <h2>Users Online</h2>
+      <mat-list>
+        @for (user of userList(); track $index) {
+          <mat-list-item>
+            {{ user }}
+          </mat-list-item>
+        } @empty {
+          <p>There are no users yet</p>
+        }
+      </mat-list>
+    </div>
+  </div>
+
+  <div class="message-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Message</mat-label>
+      <input matInput [(ngModel)]="newMessage" maxlength="256" placeholder="Enter your message...">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
+  </div>
+</div>

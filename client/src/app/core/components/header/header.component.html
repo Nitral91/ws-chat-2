@@ -1,0 +1,18 @@
+<mat-toolbar class="header">
+  <a routerLink="/">WS-chat</a>
+  <div>
+    @if (isLoggedIn()) {
+      <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu" aria-label="User Menu">
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logUserOut()">
+          <mat-icon>logout</mat-icon>Log Out
+        </button>
+      </mat-menu>
+    } @else {
+      <a class="auth-link" routerLink="/auth/sign-in" mat-raised-button>Sign In</a>
+      <a class="auth-link" routerLink="/auth/sign-up" mat-raised-button>Sign Up</a>
+    }
+  </div>
+</mat-toolbar>

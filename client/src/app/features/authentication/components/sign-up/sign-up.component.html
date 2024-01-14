@@ -1,0 +1,33 @@
+<form class="registration-form" (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput formControlName="username" placeholder="Enter your username" />
+    @if (registrationForm.get('username')?.hasError('required')) {
+      <mat-error>Username is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" placeholder="Enter your email" />
+    @if (registrationForm.get('email')?.hasError('required')) {
+      <mat-error>Email is required</mat-error>
+    }
+    @if (registrationForm.get('email')?.hasError('email')) {
+      <mat-error>Invalid email address</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password" type="password" placeholder="Enter your password" />
+    @if (registrationForm.get('password')?.hasError('required')) {
+      <mat-error>Password is required</mat-error>
+    }
+    @if (registrationForm.get('password')?.hasError('minlength')) {
+      <mat-error>Password must be at least 6 characters long</mat-error>
+    }
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="registrationForm.invalid">Register</button>
+</form>
