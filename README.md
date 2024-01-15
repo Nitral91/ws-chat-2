@@ -1,6 +1,6 @@
 # WS Chat
 
-#### Video Demo: [Your Video URL Here]
+#### Video Demo: https://youtu.be/AUQ7_nZzt1s
 
 #### Description:
 
